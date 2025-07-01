@@ -49,8 +49,18 @@ public class Main{
             }
             System.out.println();
         }
+        // Getting the average score by adding all scores in the studentScores arraylist
+        // and averaging them with the length of the arraylist
+        double sumOfGrades = 0.00;
+        for (double num : studentScores){
+            sumOfGrades += num;
+        }
+        double averageScore = sumOfGrades / studentScores.size();
 
-
+        // Display class summary
+        System.out.println();
+        System.out.println("----- Class Summary -----");
+        System.out.printf("Average score: %.2f", averageScore);
 
 
 

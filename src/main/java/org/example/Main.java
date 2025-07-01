@@ -3,6 +3,17 @@ package org.example;
 import java.util.*;
 
 public class Main{
+
+    public static double getAverageScore(ArrayList<Double> scoresOfStudents){
+        // Getting the average score by adding all scores in the studentScores arraylist
+        // and averaging them with the length of the arraylist
+        double sumOfGrades = 0.00;
+        for (double num : scoresOfStudents){
+            sumOfGrades += num;
+        }
+        return sumOfGrades / scoresOfStudents.size();
+    }
+
     public static void main(String[] args) {
         Scanner myObj = new Scanner (System.in);
 
@@ -49,21 +60,37 @@ public class Main{
             }
             System.out.println();
         }
-        // Getting the average score by adding all scores in the studentScores arraylist
-        // and averaging them with the length of the arraylist
-        double sumOfGrades = 0.00;
-        for (double num : studentScores){
-            sumOfGrades += num;
-        }
-        double averageScore = sumOfGrades / studentScores.size();
+
+        double averageScore = getAverageScore(studentScores);
 
         // Display class summary
         System.out.println();
         System.out.println("----- Class Summary -----");
-        System.out.printf("Average score: %.2f", averageScore);
+        System.out.printf("Average Score: %.2f", averageScore);
+        System.out.println();
 
+        // Grade count
+        System.out.printf("Grade Counts: A:%d B:%d C:%d D:%d F:%d",
+                countOfLetterGrades[0], countOfLetterGrades[1], countOfLetterGrades[2], countOfLetterGrades[3], countOfLetterGrades[4]);
+        System.out.println();
 
+        // Getting Top students
+        System.out.print("Top Student(s):");
 
-
+        double maxValue = Collections.max(studentScores); // Finds the maximum score
+        // Who is the student?
+        // What if multiple students have the same score?
+        ArrayList<Integer> topStudents = new ArrayList<>(); // Store index of maximum values
+        for (int i = 0; i < studentScores.size(); i++){
+            if (studentScores.get(i) == maxValue){
+                topStudents.add(i);
+            }
+        }
+        // Iterate through the list of indexes and get their corresponding values
+        // from both the studentNames and studentScores
+        for (Integer topStudent : topStudents) {
+            System.out.printf(" %s (%.0f)", studentNames.get(topStudent), studentScores.get(topStudent));
+        }
+        System.out.println(" ");
     }
 }

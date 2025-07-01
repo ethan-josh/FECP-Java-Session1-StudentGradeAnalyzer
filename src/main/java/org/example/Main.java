@@ -14,14 +14,14 @@ public class Main{
         int studentCount = 0;
         System.out.print("Enter number of students: ");
         studentCount = myObj.nextInt();
-        System.out.println();
 
         for (int i = 0; i < studentCount; i++){
+            System.out.println();
             // Getting user input of students' name and grade
-            System.out.printf("Enter name of student %d:", i+1);
-            String studentName = myObj.nextLine();
+            System.out.printf("Enter name of student %d: ", i+1);
+            String studentName = myObj.next();
             double studentGrade = 0.00;
-            System.out.printf("Enter score for " + studentName + ":");
+            System.out.printf("Enter score for " + studentName + ": ");
             studentGrade = myObj.nextDouble();
 
             //  Add input to array list
@@ -47,6 +47,7 @@ public class Main{
             } else {
                 System.out.print("Please enter a valid score.");
             }
+            System.out.println();
         }
 
 
